@@ -23,7 +23,9 @@ In order to generate the phased haplotypes we will need to use the SHAPEIT tool 
 Before running shapeit SNPs will have to be filtered for SNPs and Individuals with poor calling rates. Duplicates will also cause errors so they will need to be removed too.
 
 plink --cow --file HD_SNP_Data --keep selected.txt --chr 1-29 --geno 0.05 --maf 0.05 --make-bed --out filtered_data
+
 plink --cow --bfile filtered_data --list-duplicate-vars suppress-first --out dups
+
 plink --cow --bfile filtered_data --exclude dups.dupvar --make-bed --out clean_data
 
 Once filtered and cleaned the data will need to be split into chromosomes. This can be done by running the chromosomes.sh script, with the first argument being the name of the cleaned data, in this case clean_data and the second argument, which is the name for the output data, being cattle. 
@@ -54,5 +56,23 @@ Third argument is the name of the file containing information on the samples.
 Fourth argument is the name of the file containing the path for the output files for example: ~/projects/data/MOSAIC/inputs/
 
 bash mosaic_inputs.sh ~/projects/data/ cattle.chr sample_info.txt /projects/data/MOSAIC/inputs/
+
+### 2. Recombination Rate File ###
+The recombination rates files are made up of 3 lines and is generated from the recombination map obtained from this paper: https://doi.org/10.1371/journal.pgen.1005387
+
+1. The first contains the numbers of sites - :sites: XXXX
+2. The second contains the positions - 5467839 etc.
+3. The third contains the cumulative recombination rates, so we consecutively add the recombination rates. 
+
+In order to get the recombination map we have to the format used by MOSAIC, the r_rates.R script can be used. This script takes two arguments. 
+
+1. The first argument is the name of the recombination map file, if unchanged from the paper it should be cattle_rmap.txt
+2. The second argument is the path to where you want to put the output files, this should be the same as the output location from above, so: /projects/data/MOSAIC/inputs/
+
+Rscript r_rates.R cattle_rmap.txt /projects/data/MOSAIC/inputs/
+
+This should mean you have all the necessary input files needed to run MOSAIC.
+
+
 
 
