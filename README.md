@@ -8,13 +8,14 @@ R CMD INSTALL -l rlib MOSAIC_1.3.7.tar.gz
 ### Inputs ###
 There should be a folder with 4 types of input file:
 
-#### 1. phased haplotypes: "pop.genofile.chr" in the format #snps rows and #haps columns.
-#### 2. pop names: "sample.names" format unimportant apart from first column should have all the population names.
-#### 3. snp files: "snpfile.chr" #snps rows and 6 columns of rsID, chr, distance, position, allele ?, allele ?. 
-#### 4. recombination map: "rates.chr" 3 rows of #sites, position, cumulative recombination rate (in centiMorgans). 
+1. phased haplotypes: "pop.genofile.chr" in the format #snps rows and #haps columns.
+2. pop names: "sample.names" format unimportant apart from first column should have all the population names.
+3. snp files: "snpfile.chr" #snps rows and 6 columns of rsID, chr, distance, position, allele ?, allele ?. 
+4. recombination map: "rates.chr" 3 rows of #sites, position, cumulative recombination rate (in centiMorgans). 
 
 ### Generating Input Files ###
-# 1.Phased Haplotypes, SNP files and Sample names files.
+
+#### 1.Phased Haplotypes, SNP files and Sample names files.
 Generating these files will require several steps to get it to the format needed to get MOSAIC working. 
 
 In order to generate the phased haplotypes we will need to use the SHAPEIT tool for phasing (https://mathgen.stats.ox.ac.uk/genetics_software/shapeit/).
