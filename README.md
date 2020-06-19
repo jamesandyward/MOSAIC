@@ -44,9 +44,13 @@ With the SHAPEIT outputs generated, they will need to be converted to those whic
 6. The path to direct the output of this script to # ~/projects/data/MOSAIC/inputs/ for example.
 
 This can be done for all chromosomes with a for loop on the haps_to_mosaic.R script using the mosaaic_inputs.sh script. This script will only require 4 arguments if the haps_to_mosaic.R script is in the same location as the haps files. These arguments are:
+
 First argument is path to haps files for example: ~/projects/data/
+
 Second argument is the he part of .haps filename before chrno or example: cattle.chr 
+
 Third argument is the name of the file containing information on the samples. 
+
 Fourth argument is the name of the file containing the path for the output files for example: ~/projects/data/MOSAIC/inputs/
 
 bash mosaic_inputs.sh ~/projects/data/ cattle.chr sample_info.txt /projects/data/MOSAIC/inputs/
